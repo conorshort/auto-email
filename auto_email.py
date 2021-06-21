@@ -1,14 +1,21 @@
 import smtplib
 import ssl
+from pathlib import Path
+
+
+
 
 from config import email_config
 
 sender_email = email_config["username"]
 password = email_config["password"]
 
-receiver_email = "cshort@tcd.ie"
+receiver_email = email_config["receiver"]
 message = ''
-with open('message.txt', 'r') as message_file:
+
+
+p = Path(__file__).with_name('message.txt')
+with p.open('r') as message_file:
     message = message_file.read()
 
 
